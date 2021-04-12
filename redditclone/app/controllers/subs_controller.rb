@@ -49,4 +49,10 @@ class SubsController < ApplicationController
 
     def sub_params
         params.require(:sub).permit(:title, :description, :moderator_id)
+    end
+
+    def require_moderator
+        @sub = Sub.find(params[:id])
+        redirect_to sub_url(@sub) if current_user.id != @sub.id
+    end
 end

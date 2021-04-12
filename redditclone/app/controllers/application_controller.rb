@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
     
     helper_method :current_user, :signed_in?
 
@@ -30,9 +29,5 @@ class ApplicationController < ActionController::Base
 
     def require_signed_in!
         redirect_to new_session_url if logged_in? == false
-    end
-
-    def require_moderator
-        redirect_to subs_url if moderator? == false
     end
 end

@@ -4,6 +4,11 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :password, length: { minimum: 6, allow_nil: true }
 
+    has_many :posts,
+    foreign_key: :author_id,
+    class_name: :Post
+
+
     after_initialize :ensure_session_token
 
     attr_reader :password
