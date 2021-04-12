@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_183248) do
+ActiveRecord::Schema.define(version: 2021_04_12_200223) do
+
+  create_table "subs", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "moderator_id"
+    t.index ["moderator_id"], name: "index_subs_on_moderator_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
